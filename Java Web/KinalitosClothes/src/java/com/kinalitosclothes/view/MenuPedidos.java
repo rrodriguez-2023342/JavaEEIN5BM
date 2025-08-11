@@ -29,19 +29,19 @@ public class MenuPedidos {
 
                 switch (op) {
                     case 1:
-                        pe.agregarPedido();
+                        
                         break;
                     case 2:
-                        pe.listarPedidos();
+                        
                         break;
                     case 3:
-                        pe.buscarPedidos(idPedido);
+                        
                         break;
                     case 4:
-                        pe.eliminarPedido(idPedido);
+                       
                         break;
                     case 5:
-                        pe.editarPedido();
+                        
                         break;
                     case 0:
                         System.out.println("---------------------");

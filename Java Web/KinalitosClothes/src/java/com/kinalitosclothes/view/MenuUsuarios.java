@@ -24,23 +24,22 @@ public class MenuUsuarios {
             leer.nextLine();
             switch (op) {
                 case 1:
-                    uc.agregarUsuario();
+                    
                     break;
                 case 2:
-                    uc.listarUsuarios();
+                    
                     break;
                 case 3:
-                    uc.eliminarUsuarios();
+                    
                     break;
                 case 4:
-                    uc.buscarUsuarios();
+                    
                     break;
                 case 5:
-                    uc.editarUsuarios();
+                    
                     break;
-
                 case 0:
-                    uc.salir();
+                    
                     break;
                 default:
                     System.out.println("Por favor seleecione una de las opciones validas");

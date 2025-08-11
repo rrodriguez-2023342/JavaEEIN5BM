@@ -26,22 +26,22 @@ public class MenuCategorias {
 
             switch (op) {
                 case 1:
-                    cc.agregarCategoria();
+                    
                     break;
                 case 2:
-                    cc.listarCategorias();
+                    
                     break;
                 case 3:
-                    cc.eliminarCategoria();
+                    
                     break;
                 case 4:
-                    cc.buscarCategoria();
+                    
                     break;
                 case 5:
-                    cc.editarCategoria();
+                    
                     break;
                 case 0:
-                    cc.salir();
+                    
                     break;
                 default:
                     System.out.println("Por favor seleccione una de las opciones válidas.");

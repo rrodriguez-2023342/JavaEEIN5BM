@@ -26,22 +26,22 @@ public class MenuDetallePedido {
 
             switch (op) {
                 case 1:
-                    dc.agregarDetallePedidos();
+                    
                     break;
                 case 2:
-                    dc.listarDetallePedidos();
+                    
                     break;
                 case 3:
-                    dc.eliminarDetallePedidos();
+                    
                     break;
                 case 4:
-                    dc.buscarDetallePedidos();
+                    
                     break;
                 case 5:
-                    dc.editarDetallePedidos();
+                    
                     break;
                 case 0:
-                    dc.salir();
+                    
                     break;
                 default:
                     System.out.println("Por favor seleccione una de las opciones válidas.");

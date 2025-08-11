@@ -26,22 +26,22 @@ public class MenuClientes {
 
             switch (op) {
                 case 1:
-                    cc.agregarCliente();
+                    
                     break;
                 case 2:
-                    cc.listarClientes();
+                    
                     break;
                 case 3:
-                    cc.eliminarClientes();
+                    
                     break;
                 case 4:
-                    cc.buscarClientes();
+                    
                     break;
                 case 5:
-                    cc.editarClientes();
+                    
                     break;
                 case 0:
-                    cc.salir();
+                    
                     break;
                 default:
                     System.out.println("Por favor seleccione una de las opciones válidas.");

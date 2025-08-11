@@ -29,19 +29,19 @@ public class MenuProducto {
 
                 switch (op) {
                     case 1:
-                        pr.agregarProducto();
+                        
                         break;
                     case 2:
-                        pr.listarProductos();
+                        
                         break;
                     case 3:
-                        pr.buscarProducto(idProducto);
+                        
                         break;
                     case 4:
-                        pr.eliminarProducto(idProducto);
+                        
                         break;
                     case 5:
-                        pr.editarProducto();
+                        
                         break;
                     case 0:
                         System.out.println("---------------------");

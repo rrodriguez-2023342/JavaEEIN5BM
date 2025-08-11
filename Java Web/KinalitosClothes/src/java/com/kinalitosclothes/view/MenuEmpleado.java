@@ -22,13 +22,7 @@ public class MenuEmpleado {
             sc.nextLine(); // Limpiar buffer
 
             switch (opcion) {
-                case 1 -> EmpleadosDAO.agregarEmpleado();
-                case 2 -> EmpleadosDAO.listarEmpleados();
-                case 3 -> EmpleadosDAO.buscarEmpleado();
-                case 4 -> EmpleadosDAO.editarEmpleado();
-                case 5 -> EmpleadosDAO.eliminarEmpleado();
-                case 6 -> System.out.println("-*-*- Saliendo del menú...");
-                default -> System.out.println("******* Opción no válida *******");
+                
             }
         } while (opcion != 6);
     }

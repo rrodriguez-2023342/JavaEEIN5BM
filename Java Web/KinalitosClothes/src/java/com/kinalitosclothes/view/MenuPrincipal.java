@@ -1,7 +1,5 @@
 package com.kinalitosclothes.view;
 
-import com.kinalitosclothes.model.*;
-
 import java.util.Scanner;
 
 public class MenuPrincipal {
@@ -65,8 +63,8 @@ public class MenuPrincipal {
                         mpe.MenuPedidos();
                         break;
                     case 9:
-                        DetallePedidosDAO dpc = new DetallePedidosDAO();
-                        dpc.iniciar();
+                        
+                        
                         break;
                     case 10:
                         MenuFacturas mf = new MenuFacturas();

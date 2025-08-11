@@ -23,22 +23,22 @@ public class MenuFacturas {
             op = leer.nextInt();
             switch (op) {
                 case 1:
-                    fc.agregarFacturas();
+                    
                     break;
                 case 2:
-                    fc.listarFacturas();
+                    
                     break;
                 case 3:
-                    fc.eliminarFacturas();
+                    
                     break;
                 case 4:
-                    fc.buscarFacturas();
+                    
                     break;  
                 case 5:
-                    fc.editarFacturas();
+                    
                     break;
                 case 0:
-                    fc.salir();
+                    
                     break;
                 default:
                     System.out.println("Por favor seleecione una de las opciones validas");

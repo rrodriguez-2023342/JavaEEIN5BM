@@ -23,16 +23,6 @@ public class MenuProveedor {
             opcion = sc.nextInt();
             sc.nextLine(); // Limpiar buffer
 
-            switch (opcion) {
-                case 1 -> ProveedoresDAO.agregarProveedor();
-                case 2 -> ProveedoresDAO.listarProveedores();
-                case 3 -> ProveedoresDAO.buscarProveedor();
-                case 4 -> ProveedoresDAO.editarProveedor();
-                case 5 -> ProveedoresDAO.eliminarProveedor();
-                case 6 -> System.out.println("-*-*- Saliendo del menú...");
-                default -> System.out.println("*******Opción no válida*******");
-            }
-
         } while (opcion != 6);
     }
 }

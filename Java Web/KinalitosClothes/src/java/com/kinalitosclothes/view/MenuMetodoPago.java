@@ -26,22 +26,22 @@ public class MenuMetodoPago {
 
             switch (op) {
                 case 1:
-                    mpc.agregarMetodoPago();
+                    
                     break;
                 case 2:
-                    mpc.listarMetodoPagos();
+                    
                     break;
                 case 3:
-                    mpc.eliminarMetodoPago();
+                    
                     break;
                 case 4:
-                    mpc.buscarMetodoPago();
+                    
                     break;
                 case 5:
-                    mpc.editarMetodoPago();
+                   
                     break;
                 case 0:
-                    mpc.salir();
+                    
                     break;
                 default:
                     System.out.println("Por favor seleccione una de las opciones válidas.");
