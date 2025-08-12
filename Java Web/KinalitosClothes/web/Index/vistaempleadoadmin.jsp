@@ -59,15 +59,14 @@
                                 <label class="label-input-number">Codigo de Usuario</label>
                             </div>
 
-
-                            <button type="button" class="btn_crear_producto">
+                            <button type="button" class="btn_crear_producto" name="btnCrearEmpleado">
                                 <span class="bnt_texto">Crear Empleado</span>
                                 <span class="btn_icono">
                                     <i class="fa-solid fa-plus"></i>
                                 </span>
                             </button>
 
-                            <button type="button" class="btn_actualizar">
+                            <button type="button" class="btn_actualizar" name="btnActualizarEmpleado">
                                 <span class="bnt_texto">Actualizar</span>
                                 <span class="btn_icono">
                                     <i class="fa-solid fa-pen-to-square"></i>
