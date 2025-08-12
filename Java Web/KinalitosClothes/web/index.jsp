@@ -65,7 +65,7 @@
                                                     </div>
                                                     <button type="submit" class="btnIniciar">Entrar</button>
                                                     <p class="text-center">
-                                                        <a href="#" class="link">No te recuerdas de tu contraseña???</a>
+                                                        <a href="Index/menu.jsp" class="link">No te recuerdas de tu contraseña???</a>
                                                     </p>
                                                 </form>
                                             </div>
