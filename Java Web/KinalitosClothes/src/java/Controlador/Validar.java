@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet("/Validar")
 public class Validar extends HttpServlet {
+
     EmpleadosDAO empleadoDAO = new EmpleadosDAO();
     Empleados empleado = new Empleados();
 
@@ -36,14 +37,14 @@ public class Validar extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Controlador1</title>");            
+            out.println("<title>Servlet Controlador1</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet Controlador1 at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -72,20 +73,19 @@ public class Validar extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //Capturar la peticion del usuario a nivel del servidor
         String accion = request.getParameter("accion");
         if (accion.equalsIgnoreCase("Ingresar")) {
-            String user = request.getParameter("txtUsuario");
-            String pass = request.getParameter("txtContraseña");
+            String user = request.getParameter("txtCorreo"); // correo
+            String pass = request.getParameter("txtPass");    // telefono
             empleado = empleadoDAO.validar(user, pass);
+
             if (empleado.getCorreoEmpleado() != null) {
                 request.setAttribute("correoEmpleado", empleado);
-                request.getRequestDispatcher("Principal.jsp").forward(request, response);
-        
-            }else{
+                request.getRequestDispatcher("Controlador?menu=Principal").forward(request, response);
+            } else {
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }
-        }else{
+        } else {
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
     }

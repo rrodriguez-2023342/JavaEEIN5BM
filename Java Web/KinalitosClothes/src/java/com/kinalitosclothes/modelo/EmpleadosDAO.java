@@ -6,16 +6,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class EmpleadosDAO {
+
     Conexion cn = new Conexion();
     Connection con;
     PreparedStatement ps;
     ResultSet rs;
     int resp;
-    
+
     public Empleados validar(String correoEmpleado, String telefonoEmpleado) {
-        //instanciar el objeto de la entidad Empleado
+// instanciar el objeto de la entidad Empleado
         Empleados empleado = new Empleados();
-        //agregar una variable de tipo String para muestra de consulta sql
+        //agregar una cariable de tipo string para muestra de consulta sql
         String sql = "select * from Empleados where correoEmpleado = ? and telefonoEmpleado = ?";
         try {
             con = cn.Conexion();
@@ -29,14 +30,11 @@ public class EmpleadosDAO {
                 empleado.setApellidoEmpleado(rs.getString("apellidoEmpleado"));
                 empleado.setCorreoEmpleado(rs.getString("correoEmpleado"));
                 empleado.setTelefonoEmpleado(rs.getString("telefonoEmpleado"));
-                empleado.setDireccionEmpleado(rs.getString("direccionEmpleado"));
-                empleado.setCodigoUsuario(rs.getInt("codigoUsuario"));
-        
             }
         } catch (Exception e) {
             System.out.println("El usuario o contraseña son incorrectos");
             e.printStackTrace();
         }
-        return empleado; //Empleado Encontrado
+        return empleado;
     }
 }

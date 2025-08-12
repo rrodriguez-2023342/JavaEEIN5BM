@@ -77,6 +77,11 @@ Create table Empleados(
 		references Usuarios (codigoUsuario)
 );
 
+
+
+select * from Empleados where 
+	correoEmpleado = "juan.ramirez@empresa.com" and telefonoEmpleado = "+502 5123-1123";
+
 -- Productos
 Create table Productos(
 	codigoProducto int auto_increment,
@@ -683,7 +688,7 @@ Delimiter //
 				Values(nombreEmpleado, apellidoEmpleado, correoEmpleado, telefonoEmpleado, direccionEmpleado, codigoUsuario);
         End //
 Delimiter ;
-call sp_AgregarEmpleado('Juan', 'Ramírez', 'juan.ramirez@empresa.com', '+502 5123-1123', 'Zona 1, Ciudad de Guatemala', 1);
+call sp_AgregarEmpleado('Juan', 'Ramírez', 'juan.ramirez@empresa.com', '1', 'Zona 1, Ciudad de Guatemala', 1);
 call sp_AgregarEmpleado('Karla', 'López', 'karla.lopez@empresa.com', '+502 4789-2210', 'Zona 9, Ciudad de Guatemala', 2);
 call sp_AgregarEmpleado('Roberto', 'Pérez', 'roberto.perez@empresa.com', '+502 5567-3344', 'Zona 4, Mixco', 3);
 call sp_AgregarEmpleado('Sofía', 'Gómez', 'sofia.gomez@empresa.com', '+502 4123-5588', 'Zona 10, Guatemala', 4);
@@ -705,7 +710,7 @@ call sp_AgregarEmpleado('Óscar', 'Luna', 'oscar.luna@empresa.com', '+502 8888-1
 call sp_AgregarEmpleado('Rebeca', 'Juárez', 'rebeca.juarez@empresa.com', '+502 7766-3344', 'Santa Catarina Pinula', 20);
 
 select * from Empleados 
-	where correoEmpleado = "juan.ramirez@empresa.com" and telefonoEmpleado = "+502 5123-1123";
+	where correoEmpleado = "juan.ramirez@empresa.com" and telefonoEmpleado = "1";
 
 -- Listar Empleados
 Delimiter //

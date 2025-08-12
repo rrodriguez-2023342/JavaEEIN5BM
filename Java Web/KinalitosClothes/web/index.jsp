@@ -56,17 +56,16 @@
                                                 <form action="Validar" method="POST">
                                                     <h4 class="heading">Inicio de Sesión</h4>
                                                     <div class="form-group">
-                                                        <input type="text" name="txtUsuario" id="usuario_login" class="form-style" placeholder="Usuario" required>
+                                                        <input type="text" name="txtCorreo" id="usuario_login" class="form-style" placeholder="Correo" required>
                                                         <i class="input-icon material-icons">perm_identity</i>
                                                     </div>
                                                     <div class="form-group">
-                                                        <input type="password" name="txtContraseña" id="password_login" class="form-style" placeholder="Contraseña" required>
+                                                        <input type="password" name="txtPass" id="password_login" class="form-style" placeholder="Contraseña" required>
                                                         <i class="input-icon material-icons">lock</i>
                                                     </div>
                                                     <center>
-                                                        <input type="submit" class="btnIniciar" name="accion" value="Ingresar">
+                                                        <input type="submit" class="btnIniciar" name="accion" value="Ingresar" placeholder="Entrar">
                                                     </center>
-                                                    
                                                     <p class="text-center">
                                                         <a href="Index/Principal.jsp" class="link">No te recuerdas de tu contraseña???</a>
                                                     </p>
