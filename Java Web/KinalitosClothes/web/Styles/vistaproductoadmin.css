@@ -123,6 +123,7 @@ h1 {
 .section h2 {
     color: #2c3e50;
     margin-bottom: 25px;
+    /*Color de la linea debajo del texto*/
     border-bottom: 3px solid #00b7ff;
     padding-bottom: 10px;
     font-size: 1.8rem;
@@ -162,6 +163,7 @@ h1 {
 .label-input {
     position: absolute;
     left: 15px;
+    /*Color del texto dentro del input*/
     color: #000000;
     pointer-events: none;
     transform: translateY(1rem);
@@ -171,6 +173,7 @@ h1 {
 .label-input-number {
     position: absolute;
     left: 15px;
+    /*Color del texto dentro del input*/
     color: transparent;
     pointer-events: none;
     transform: translateY(1rem);
@@ -188,14 +191,19 @@ h1 {
     transform: translateY(-50%) scale(0.8);
     background-color: white;
     padding: 0 .2em;
+    /*color del texto cuando sube*/
     color: #000000;
 }
 
+
+
+/*Boton crear*/
 .btn_crear_producto {
     --main-focus: #00e1ff;
     --font-color: #000000;
     --bg-color-sub: #5ccbff;
     --bg-color: #ffffff;
+    /*borde*/
     --main-color: #000000;
 
     position: relative;
@@ -267,11 +275,14 @@ h1 {
     box-shadow: 0px 0px var(--main-color);
 }
 
+
+/*Boton actualizar*/
 .btn_actualizar {
     --main-focus: #00e1ff;
     --font-color: #000000;
     --bg-color-sub: #5ccbff;
     --bg-color: #ffffff;
+    /*borde*/
     --main-color: #000000;
 
     position: relative;
@@ -343,11 +354,14 @@ h1 {
     box-shadow: 0px 0px var(--main-color);
 }
 
+
+/*boton buscar*/
 .btn_buscar {
     --main-focus: #00e1ff;
     --font-color: #000000;
     --bg-color-sub: #5ccbff;
     --bg-color: #ffffff;
+    /*borde*/
     --main-color: #000000;
 
     position: relative;
@@ -425,10 +439,11 @@ h1 {
     --font-color: #000000;
     --bg-color-sub: #5ccbff;
     --bg-color: #ffffff;
+    /*borde*/
     --main-color: #000000;
 
     position: relative;
-    width: 150px;
+    width: 160px;
     height: 40px;
     cursor: pointer;
     display: flex;
@@ -496,11 +511,13 @@ h1 {
     box-shadow: 0px 0px var(--main-color);
 }
 
+/*boton eliminar*/
 .btn_eliminar {
-    --main-focus: #00e1ff;
+    --main-focus: #ff0000;
     --font-color: #000000;
-    --bg-color-sub: #5ccbff;
+    --bg-color-sub: #ff5c5c;
     --bg-color: #ffffff;
+    /*borde*/
     --main-color: #000000;
 
     position: relative;
@@ -518,8 +535,6 @@ h1 {
     padding-left: 15px;
     gap: 10px;
     font-family: inherit;
-    margin-top: 1%;
-    margin-left: 5%;
 }
 
 .btn_eliminar,
@@ -583,7 +598,10 @@ h1 {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-
+.botonesTabla {
+    display: flex;
+    gap: 8px;
+}
 
 .error {
     background: linear-gradient(135deg, #f8d7da, #f5c6cb);
@@ -596,7 +614,6 @@ h1 {
     color: #856404;
     border-left-color: #ffc107;
 }
-
 
 /* Estilos base de la tabla */
 .table-container {

@@ -62,7 +62,8 @@
                                     <label class="label-input-number">Codigo de la Categoria</label>
                                 </div>
 
-
+                            </div>
+                            <div class="form-row">
                                 <button type="button" class="btn_crear_producto">
                                     <span class="bnt_texto">Crear Producto</span>
                                     <span class="btn_icono">
