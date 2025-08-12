@@ -704,6 +704,9 @@ call sp_AgregarEmpleado('Valeria', 'Navarro', 'valeria.navarro@empresa.com', '+5
 call sp_AgregarEmpleado('Óscar', 'Luna', 'oscar.luna@empresa.com', '+502 8888-1212', 'Jocotenango, zona 2', 19);
 call sp_AgregarEmpleado('Rebeca', 'Juárez', 'rebeca.juarez@empresa.com', '+502 7766-3344', 'Santa Catarina Pinula', 20);
 
+select * from Empleados 
+	where correoEmpleado = "juan.ramirez@empresa.com" and telefonoEmpleado = "+502 5123-1123";
+
 -- Listar Empleados
 Delimiter //
 	Create procedure sp_ListarEmpleados()

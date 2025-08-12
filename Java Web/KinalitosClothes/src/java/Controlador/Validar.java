@@ -1,8 +1,11 @@
-package com.kinalitosclothes.controlador;
+package Controlador;
 
+import com.kinalitosclothes.modelo.Empleados;
+import com.kinalitosclothes.modelo.EmpleadosDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,7 +14,10 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author informatica
  */
+@WebServlet("/Validar")
 public class Validar extends HttpServlet {
+    EmpleadosDAO empleadoDAO = new EmpleadosDAO();
+    Empleados empleado = new Empleados();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,13 +36,14 @@ public class Validar extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Validar</title>");            
+            out.println("<title>Servlet Controlador1</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Validar at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Controlador1 at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -65,7 +72,22 @@ public class Validar extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //Capturar la peticion del usuario a nivel del servidor
+        String accion = request.getParameter("accion");
+        if (accion.equalsIgnoreCase("Ingresar")) {
+            String user = request.getParameter("txtUsuario");
+            String pass = request.getParameter("txtContraseña");
+            empleado = empleadoDAO.validar(user, pass);
+            if (empleado.getCorreoEmpleado() != null) {
+                request.setAttribute("correoEmpleado", empleado);
+                request.getRequestDispatcher("Principal.jsp").forward(request, response);
+        
+            }else{
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            }
+        }else{
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+        }
     }
 
     /**
