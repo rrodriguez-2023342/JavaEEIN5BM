@@ -128,7 +128,7 @@
                     <p class="card-description">Gestiona la información del Empleado, como agregar, listar, actualizar,
                         eliminar.
                     </p>
-                    <a href="${pageContext.request.contextPath}/Index/vistaempleadoadmin.jsp" class="btn_ver_gestion">Gestionar Empleados</a>
+                    <a href="Controlador?menu=VistaEmpleado&accion=Listar" class="btn_ver_gestion" >Gestionar Empleados</a>
                 </div>
             </div>
         </div>
