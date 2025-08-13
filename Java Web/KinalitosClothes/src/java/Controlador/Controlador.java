@@ -70,13 +70,13 @@ public class Controlador extends HttpServlet {
             request.getRequestDispatcher("Index/vistaempleadoadmin.jsp").forward(request, response);
 
         } else if (menu.equals("VistaCliente")) {
-            request.getRequestDispatcher("Index/vistaclienteadmin.jsp").forward(request, response);
+            request.getRequestDispatcher("Index/vistaclientesadmin.jsp").forward(request, response);
         } else if (menu.equals("VistaProducto")) {
             request.getRequestDispatcher("Index/vistaproductoadmin.jsp").forward(request, response);
         } else if (menu.equals("VistaUsuario")) {
             request.getRequestDispatcher("Index/VistaUsuarioAdmin.jsp").forward(request, response);
         } else if (menu.equals("VistaPedido")) {
-            request.getRequestDispatcher("Index/vistapedidosadmin.jsp").forward(request, response);
+            request.getRequestDispatcher("Index/vistapedidoadmin.jsp").forward(request, response);
         } else if (menu.equals("VistaFactura")) {
             request.getRequestDispatcher("Index/VistaFacturaAdmin.jsp").forward(request, response);
         } else if (menu.equals("VistaCategoria")) {

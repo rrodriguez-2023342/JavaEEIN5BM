@@ -60,7 +60,7 @@
                                 <label class="label-input-number">Codigo de Usuario</label>
                             </div>
 
-                            <button type="submit" class="btn_crear_producto" value="Agregar" name="btnCrearEmpleado">
+                            <button type="submit" class="btn_crear_producto" value="Agregar" name="accion">
                                 <span class="bnt_texto">Crear Empleado</span>
                                 <span class="btn_icono">
                                     <i class="fa-solid fa-plus"></i>

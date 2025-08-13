@@ -78,7 +78,7 @@ public class EmpleadosDAO {
             ps.setString(4, emp.getTelefonoEmpleado());
             ps.setString(5, emp.getDireccionEmpleado());
             ps.setInt(6, emp.getCodigoUsuario());
-            ps.executeUpdate();
+            ps.executeQuery();
         } catch (Exception e) {
             e.printStackTrace();
         }

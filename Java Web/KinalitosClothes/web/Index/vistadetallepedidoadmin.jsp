@@ -17,7 +17,7 @@
             <div class="nav-content">
                 <div class="logo">K<span>C</span></div>
                 <ul class="menu">
-                    <li><a href="${pageContext.request.contextPath}/Index/vistaadmin.jsp">Menú Administrador</a></li>
+                    <li><a href="Controlador?menu=VistaAdmin">Menú Administrador</a></li>
                 </ul>
             </div>
         </nav>
