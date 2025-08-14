@@ -76,7 +76,7 @@ Create table Empleados(
     constraint FK_EmpleadocodigoUsuario foreign key (codigoUsuario)
 		references Usuarios (codigoUsuario)
 );
-
+select * from Empleados;
 
 
 select * from Empleados where 
@@ -106,11 +106,11 @@ Create table Pedidos(
     fechaPedido date not null,
     estadoPedido enum('Pendiente', 'Enviado', 'Entregado') not null, 
     total double(10,2) not null,
-    codigoCliente int not null,
+    codigoUsuario int not null,
     codigoMetodoPago int not null,
     primary key PK_codigoPedido (codigoPedido),
-	constraint FK_codigoCliente foreign key (codigoCliente)
-		references Clientes (codigoCliente),
+	constraint codigoUsuario foreign key (codigoUsuario)
+		references Usuarios (codigoUsuario),
 	constraint FK_codigoMetodoPago foreign key (codigoMetodoPago)
 		references MetodoPagos (codigoMetodoPago)
 );
@@ -617,7 +617,7 @@ call sp_AgregarCliente('Valeria', 'Morales', 'valeria.morales@gmail.com', '+502 
 Delimiter //
 	Create procedure sp_ListarClientes()
 		Begin
-			Select codigoCliente, nombreCliente, apellidoCliente, correoCliente, telefonoCliente, direccionCliente from Clientes;
+			Select codigoCliente, nombreCliente, apellidoCliente, correoCliente, telefonoCliente, direccionCliente, codigoUsuario from Clientes;
         End //
 Delimiter ;
 call sp_ListarClientes();
@@ -881,11 +881,11 @@ Delimiter //
     in fechaPedido date, 
     in estadoPedido enum('Pendiente','Enviado','Entregado'), 
     in total double(5,2), 
-    in codigoCliente int, 
+    in codigoUsuario int, 
     in codigoMetodoPago int)
 		Begin
-			Insert into Pedidos(horaPedido, fechaPedido, estadoPedido, total, codigoCliente, codigoMetodoPago)
-				Values(horaPedido, fechaPedido, estadoPedido, total, codigoCliente, codigoMetodoPago);
+			Insert into Pedidos(horaPedido, fechaPedido, estadoPedido, total, codigoUsuario, codigoMetodoPago)
+				Values(horaPedido, fechaPedido, estadoPedido, total, codigoUsuario, codigoMetodoPago);
         End //
 Delimiter ;
 call sp_AgregarPedido('10:30:00', '2025-06-01', 'Pendiente', 599.99, 1, 1);
@@ -913,11 +913,11 @@ call sp_AgregarPedido('08:40:00', '2025-06-20', 'Entregado', 270.60, 5, 1);
 Delimiter //
 	Create procedure sp_ListarPedido()
 		Begin
-			Select codigoPedido, horaPedido, fechaPedido, estadoPedido, total, codigoCliente, codigoMetodoPago from Pedidos;
+			Select codigoPedido, horaPedido, fechaPedido, estadoPedido, total, codigoUsuario, codigoMetodoPago from Pedidos;
         End //
 Delimiter ;
 call sp_ListarPedido();
-
+/*
 -- Eliminar Pedido
 Delimiter //
 	Create procedure sp_EliminarPedido(
@@ -968,7 +968,7 @@ call sp_EditarPedido(16, '15:00:00', '2025-06-16', 'Entregado', 750.00, 1, 5);
 call sp_EditarPedido(17, '11:30:00', '2025-06-17', 'Pendiente', 430.20, 2, 1);
 call sp_EditarPedido(18, '13:45:00', '2025-06-18', 'Enviado', 980.10, 3, 4);
 call sp_EditarPedido(19, '09:30:00', '2025-06-19', 'Entregado', 299.90, 4, 2);
-call sp_EditarPedido(20, '10:25:00', '2025-06-20', 'Pendiente', 645.55, 5, 3);
+call sp_EditarPedido(20, '10:25:00', '2025-06-20', 'Pendiente', 645.55, 5, 3);*/
 
 -- --------------------------- Entidad DetallePedido --------------------------- 
 -- Agregar DetallePedido

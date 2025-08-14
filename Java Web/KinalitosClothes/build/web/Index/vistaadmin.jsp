@@ -100,7 +100,7 @@
                     <p class="card-description">Gestiona la información de Pedido, como agregar, listar, actualizar,
                         eliminar.
                     </p>
-                    <a href="Controlador?menu=VistaPedido" class="btn_ver_gestion">Gestionar Pedidos</a>
+                    <a href="Controlador?menu=VistaPedido&accion=Listar" class="btn_ver_gestion">Gestionar Pedidos</a>
                 </div>
 
                 <div class="admin-card">

@@ -1,18 +1,32 @@
 package Controlador;
 
+import com.kinalitosclothes.modelo.Clientes;
+import com.kinalitosclothes.modelo.ClientesDAO;
 import com.kinalitosclothes.modelo.Empleados;
 import com.kinalitosclothes.modelo.EmpleadosDAO;
+import com.kinalitosclothes.modelo.Pedidos;
+import com.kinalitosclothes.modelo.PedidosDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Time;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class Controlador extends HttpServlet {
+
     EmpleadosDAO empleadoDAO = new EmpleadosDAO();
     Empleados empleado = new Empleados();
+
+    PedidosDAO pedidoDAO = new PedidosDAO();
+    Pedidos pedido = new Pedidos();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -24,7 +38,7 @@ public class Controlador extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ParseException {
         String menu = request.getParameter("menu");
         String accion = request.getParameter("accion");
         if (menu.equals("Principal")) {
@@ -76,6 +90,50 @@ public class Controlador extends HttpServlet {
         } else if (menu.equals("VistaUsuario")) {
             request.getRequestDispatcher("Index/VistaUsuarioAdmin.jsp").forward(request, response);
         } else if (menu.equals("VistaPedido")) {
+            switch (accion) {
+                case "Listar":
+                    List listapedidos = pedidoDAO.listar();
+                    request.setAttribute("pedidos", listapedidos);
+                    break;
+                case "Agregar":
+                    int codigoUsuario = 0;
+                    int codigoMetodoP = 0;
+                    String horaStr = request.getParameter("txtHoraPedido");
+                    if (horaStr.length() == 5) {
+                        horaStr += ":00";
+                    }
+                    Time Hora = Time.valueOf(horaStr);
+                    String fechaStr = request.getParameter("txtFechaPedido");
+                    Date Fecha = new SimpleDateFormat("yyyy-MM-dd").parse(fechaStr);
+                    String Estado = request.getParameter("txtEstadoPedido");
+                    Double Total = Double.valueOf(request.getParameter("txtTotal"));
+                    String codUsuarioStr = request.getParameter("txtCodigoUsuario");
+                    String codMetodoStr = request.getParameter("txtCodigoMetodoPago"); // corregido
+                    try {
+                        codigoUsuario = Integer.parseInt(codUsuarioStr);
+                        codigoMetodoP = Integer.parseInt(codMetodoStr);
+                    } catch (NumberFormatException e) {
+                        System.out.println("El código de usuario o método de pago no es un número válido.");
+                        return;
+                    }
+                    pedido.setHoraPedido(Hora);
+                    pedido.setFechaPedido(Fecha);
+                    pedido.setEstadoPedido(Pedidos.Estado.Pendiente);
+                    pedido.setTotal(Total);
+                    pedido.setCodigoUsuario(codigoUsuario);
+                    pedido.setCodigoMetodoPago(codigoMetodoP);
+                    pedidoDAO.agregar(pedido);
+                    request.getRequestDispatcher("Controlador?menu=VistaPedido&accion=Listar").forward(request, response);
+                    break;
+                case "Editar":
+                    break;
+                case "Actualizar":
+                    break;
+                case "Eliminar":
+                    break;
+                default:
+                    System.out.println("No se encontro");
+            }
             request.getRequestDispatcher("Index/vistapedidoadmin.jsp").forward(request, response);
         } else if (menu.equals("VistaFactura")) {
             request.getRequestDispatcher("Index/VistaFacturaAdmin.jsp").forward(request, response);
@@ -116,7 +174,11 @@ public class Controlador extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ParseException ex) {
+            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -130,7 +192,11 @@ public class Controlador extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ParseException ex) {
+            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
