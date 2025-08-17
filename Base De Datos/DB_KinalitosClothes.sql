@@ -917,7 +917,7 @@ Delimiter //
         End //
 Delimiter ;
 call sp_ListarPedido();
-/*
+
 -- Eliminar Pedido
 Delimiter //
 	Create procedure sp_EliminarPedido(
@@ -937,12 +937,12 @@ Delimiter //
 	Create procedure sp_BuscarPedido(
     in _codigoPedido int)
 		Begin
-			Select codigoPedido, horaPedido, fechaPedido, estadoPedido, total, codigoCliente, codigoMetodoPago from Pedidos
+			Select codigoPedido, horaPedido, fechaPedido, estadoPedido, total, codigoUsuario, codigoMetodoPago from Pedidos
 				where codigoPedido = _codigoPedido;
         End //
 Delimiter ;
 call sp_BuscarPedido(1);
-
+/*
 -- Editar Pedido
 Delimiter //
 	Create procedure sp_EditarPedido(

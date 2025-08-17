@@ -11,6 +11,7 @@ import java.io.PrintWriter;
 import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -24,9 +25,6 @@ public class Controlador extends HttpServlet {
 
     EmpleadosDAO empleadoDAO = new EmpleadosDAO();
     Empleados empleado = new Empleados();
-
-    PedidosDAO pedidoDAO = new PedidosDAO();
-    Pedidos pedido = new Pedidos();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,6 +42,7 @@ public class Controlador extends HttpServlet {
         if (menu.equals("Principal")) {
             request.getRequestDispatcher("Index/Principal.jsp").forward(request, response);
         } else if (menu.equals("VistaEmpleado")) {
+            /*
             switch (accion) {
                 case "Listar":
                     List listaempleados = empleadoDAO.listar();
@@ -82,7 +81,7 @@ public class Controlador extends HttpServlet {
                     System.out.println("No se encontro");
             }
             request.getRequestDispatcher("Index/vistaempleadoadmin.jsp").forward(request, response);
-
+             */
         } else if (menu.equals("VistaCliente")) {
             request.getRequestDispatcher("Index/vistaclientesadmin.jsp").forward(request, response);
         } else if (menu.equals("VistaProducto")) {
@@ -90,6 +89,8 @@ public class Controlador extends HttpServlet {
         } else if (menu.equals("VistaUsuario")) {
             request.getRequestDispatcher("Index/VistaUsuarioAdmin.jsp").forward(request, response);
         } else if (menu.equals("VistaPedido")) {
+            PedidosDAO pedidoDAO = new PedidosDAO();
+            Pedidos pedido = new Pedidos();
             switch (accion) {
                 case "Listar":
                     List listapedidos = pedidoDAO.listar();
@@ -98,11 +99,8 @@ public class Controlador extends HttpServlet {
                 case "Agregar":
                     int codigoUsuario = 0;
                     int codigoMetodoP = 0;
-                    String horaStr = request.getParameter("txtHoraPedido");
-                    if (horaStr.length() == 5) {
-                        horaStr += ":00";
-                    }
-                    Time Hora = Time.valueOf(horaStr);
+                    String horaStr = request.getParameter("txtHoraPedido"); 
+                    Time Hora = Time.valueOf(horaStr + ":00"); 
                     String fechaStr = request.getParameter("txtFechaPedido");
                     Date Fecha = new SimpleDateFormat("yyyy-MM-dd").parse(fechaStr);
                     String Estado = request.getParameter("txtEstadoPedido");
@@ -129,7 +127,51 @@ public class Controlador extends HttpServlet {
                     break;
                 case "Actualizar":
                     break;
+                case "Buscar":
+                    String codigoPed = request.getParameter("txtBuscarId");
+                    List<Pedidos> listaPedidosB = new ArrayList<>();
+                    if (codigoPed != null && !codigoPed.trim().isEmpty()) {
+                        try {
+                            int codigoP = Integer.parseInt(codigoPed);
+                            Pedidos pedidoEncontrado = pedidoDAO.buscar(codigoP);
+
+                            if (pedidoEncontrado != null) {
+                                listaPedidosB.add(pedidoEncontrado);
+                            } else {
+                                request.setAttribute("error", "Factura no encontrada");
+                            }
+                        } catch (NumberFormatException e) {
+                            request.setAttribute("error", "ID de Factura inválido");
+                        }
+                    } else {
+                        listaPedidosB = pedidoDAO.listar();
+                    }
+
+                    request.setAttribute("pedidos", listaPedidosB);
+                    request.getRequestDispatcher("/Index/vistapedidoadmin.jsp").forward(request, response);
+
+                    break;
                 case "Eliminar":
+                    String idEliminar = request.getParameter("id");
+                    if (idEliminar != null && !idEliminar.trim().isEmpty()) {
+                        try {
+                            int codigo = Integer.parseInt(idEliminar);
+
+                            int resultado = pedidoDAO.eliminar(codigo);
+
+                            if (resultado > 0) {
+                                request.setAttribute("mensaje", "Pedido eliminado exitosamente");
+                            } else {
+                                request.setAttribute("error", "Error al eliminar el pedido");
+                            }
+
+                        } catch (NumberFormatException e) {
+                            request.setAttribute("error", "ID de pedido inválido");
+                        }
+
+                        response.sendRedirect("Controlador?menu=VistaPedido&accion=Listar");
+                        return;
+                    }
                     break;
                 default:
                     System.out.println("No se encontro");
